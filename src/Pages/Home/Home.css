@@ -1,0 +1,15 @@
+.primary-button{
+    background-color: red;
+    border: none;
+    position: absolute;
+    bottom:2rem;
+    right: 2rem;
+    font-size: 1.4rem;
+    font-weight: medium;
+    padding:1rem 1.5rem;
+    border-radius: .8rem;
+    -webkit-border-radius: .8rem;
+    -moz-border-radius: .8rem;
+    -ms-border-radius: .8rem;
+    -o-border-radius: .8rem;
+}

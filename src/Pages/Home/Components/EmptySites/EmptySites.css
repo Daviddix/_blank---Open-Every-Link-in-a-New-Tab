@@ -1,0 +1,21 @@
+main .empty-sites{
+    width:90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:10rem auto;
+}
+
+.empty-sites > img{
+    width: 7rem;
+}
+
+.empty-sites > h1{
+    font-size: 1.8rem;
+    margin: 1rem 0 0 0;
+}
+
+.empty-sites > p{
+    font-size: 1.4rem;
+    text-align: center;
+}

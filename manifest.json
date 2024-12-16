@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "_blank",
+    "description": "_blank is a chrome extension that makes every link you click open in a new tab",
+    "version": "1.0.0",
+    "action": { "default_popup": "index.html" },
+    "content_scripts": [
+        {
+          "js": ["src/Scripts/Content_Scripts/Content_Scripts.tsx"],
+          "matches": ["<all_urls>"]
+        }
+      ],
+      "permissions": ["storage", "activeTab", "tabs", "sidePanel"],
+      "background": {
+        "service_worker": "src/Scripts/Background.ts"
+      },
+      "side_panel" : {
+        "default_path" : "index.html"
+    },
+    "icons": {
+      "16": "icons/icon16.png", 
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  }

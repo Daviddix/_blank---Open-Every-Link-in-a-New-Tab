@@ -1,0 +1,38 @@
+.added-sites .single-site{
+    border:1px solid red;
+    border-radius: 1rem;
+    padding:.6rem;
+    height: 5.5rem;
+    display: flex;
+    align-items: center;
+    margin: 0 0 .8rem 0;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+
+.single-site h2{
+    flex:1;
+    font-size: 1.6rem;
+}
+
+.single-site button{
+    height:100%;
+    width: 3.7rem;
+    border: none;
+    border-radius: .8rem;
+    -webkit-border-radius: .8rem;
+    -moz-border-radius: .8rem;
+    -ms-border-radius: .8rem;
+    -o-border-radius: .8rem;
+}
+
+.single-site button:last-of-type{
+    margin: 0 0 0 .5rem;
+}
+
+.single-site button img{
+    width: 55%;
+    aspect-ratio: 1/1;
+}

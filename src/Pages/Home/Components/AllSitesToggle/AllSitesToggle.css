@@ -1,0 +1,16 @@
+main .all-sites{
+    background-color: red;
+}
+
+.all-sites .all-sites-inner{
+    display: flex;
+    width:90%;
+    margin:0 auto;
+    align-items: center;
+    padding: .4rem 0;
+}
+
+.all-sites-inner p{
+    font-size: 1.4rem;
+    margin: 0 0 0 .4rem;
+}
