@@ -30,6 +30,19 @@
     background-color: var(--primary-lighter);
 }
 
+.single-site button:active img{
+    transition: transform ease-in-out .1s;
+    transform: scale(.9);
+    -webkit-transform: scale(.9);
+    -moz-transform: scale(.9);
+    -ms-transform: scale(.9);
+    -o-transform: scale(.9);
+    -webkit-transition: transform ease-in-out .1s;
+    -moz-transition: transform ease-in-out .1s;
+    -ms-transition: transform ease-in-out .1s;
+    -o-transition: transform ease-in-out .1s;
+}
+
 .single-site button:last-of-type{
     margin: 0 0 0 .5rem;
     background-color: var(--red-lighter);

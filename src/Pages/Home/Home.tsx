@@ -20,7 +20,7 @@ function Home() {
 
         {/* <AddSiteModal /> */}
 
-        <EditSiteModal />
+        {/* <EditSiteModal /> */}
 
         <button className="primary-button">Add New Site</button>
     </main>

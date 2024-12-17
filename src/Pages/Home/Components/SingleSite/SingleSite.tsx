@@ -14,7 +14,7 @@ function SingleSite() {
             <button className="delete">
             <img src={deleteIcon} alt="delete site" />
             </button>
-          </div>
+    </div>
   )
 }
 
