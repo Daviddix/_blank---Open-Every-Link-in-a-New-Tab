@@ -2,16 +2,50 @@ import editIcon from "../../../../assets/pencil-icon.svg"
 import deleteIcon from "../../../../assets/trash-icon.svg"
 import "./SingleSite.css"
 
-function SingleSite() {
+
+type AddedSite = {
+  name : string,
+  id : number
+}
+
+type propTypes = {
+  name : string;
+  id : number;
+  setShowEditModal : React.Dispatch<React.SetStateAction<boolean>>;
+  setValuesToEdit : React.Dispatch<React.SetStateAction<{name : string, id : number}>>;
+  allAddedSites : AddedSite[],
+  setAllAddedSites :  React.Dispatch<React.SetStateAction<AddedSite[]>>,
+}
+
+function SingleSite({name, id, setShowEditModal, setValuesToEdit, allAddedSites, setAllAddedSites} : propTypes) {
+
+  function showEditModal(){
+    setValuesToEdit({
+      name,
+      id
+    })
+    setShowEditModal(true)
+  }
+
+  function deleteSiteFromList(id : number){
+    const newSites = allAddedSites.filter((site : AddedSite)=> site.id !== id)
+    setAllAddedSites(newSites)
+  }
   return (
     <div className="single-site">
-            <h2>www.stackoverflow.com</h2>
+            <h2>{name}</h2>
 
-            <button className="edit">
+            <button 
+            onClick={showEditModal}
+            className="edit">
               <img src={editIcon} alt="edit site name" />
             </button>
 
-            <button className="delete">
+            <button 
+            onClick={()=>{
+              deleteSiteFromList(id)
+            }}
+            className="delete">
             <img src={deleteIcon} alt="delete site" />
             </button>
     </div>
