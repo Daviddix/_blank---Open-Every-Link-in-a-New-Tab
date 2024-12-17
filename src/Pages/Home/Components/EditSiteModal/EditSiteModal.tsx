@@ -5,8 +5,8 @@ import { FormEvent, useState } from "react";
 type propTypes = {
   name : string;
   id : number;
-  setShowEditModal : Function
-  setValuesToEdit : null
+  setShowEditModal : Function;
+  setValuesToEdit : null;
 }
 
 type addedSites = {
@@ -19,18 +19,26 @@ function EditSiteModal({valuesToEdit, setShowEditModal, setValuesToEdit, allAdde
 
   function closeModal(){
     setValuesToEdit({})
+
     setShowEditModal(false)
   }
 
-  function updateParticularSite(newSiteName : string, oldSiteId : number, e: FormEvent<HTMLFormElement>) {
+  async function updateParticularSite(newSiteName : string, oldSiteId : number, e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const filteredSites = allAddedSites.filter((site : addedSites)=> site.id !== valuesToEdit.id)
+
+    const filteredSites = allAddedSites.filter((site : addedSites)=> site.id !== oldSiteId)
+
     const newSiteCreated = {
-      name : newName,
+      name : newSiteName,
       id : Date.now()
     }
+
     filteredSites.push(newSiteCreated)
+
+    await chrome.storage.local.set({sitesInStorage : filteredSites})
+
     setAllAddedSites(filteredSites)
+
     closeModal()
   }
 

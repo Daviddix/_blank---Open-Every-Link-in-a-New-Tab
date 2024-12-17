@@ -6,7 +6,7 @@ import SingleSite from "./Components/SingleSite/SingleSite"
 import AddedSitesContainer from "./Components/AddedSitesContainer/AddedSitesContainer"
 import AddSiteModal from "./Components/AddSiteModal/AddSiteModal"
 import EditSiteModal from "./Components/EditSiteModal/EditSiteModal"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 type AddedSite = {
   name : string,
@@ -30,6 +30,18 @@ function Home() {
   function showAddToListModal(){
     setShowAddToSiteModal(true)
   }
+
+  async function getSitesFromStorage(){
+    const sites = await chrome.storage.local.get("sitesInStorage")
+
+    const sitesValues = await sites.sitesInStorage || []
+
+    setAllAddedSites(sitesValues)
+  }
+
+  useEffect(()=>{
+    getSitesFromStorage()
+  }, [])
   
   return (
     <main>

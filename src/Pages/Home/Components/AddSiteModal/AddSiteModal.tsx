@@ -15,13 +15,19 @@ type propTypes = {
 function AddSiteModal({setAllAddedSites, setShowAddToSiteModal} : propTypes) {
   const [siteNameBeingTyped, setSiteNameBeingTyped] = useState("")
 
-  function addNewSite(siteName : string, e : FormEvent){
+  async function addNewSite(siteName : string, e : FormEvent){
     e.preventDefault()
 
     const newSiteData : AddedSite = {
       name : siteName,
       id : Date.now()
     }
+
+    const sitesInStorage = await chrome.storage.local.get(["sitesInStorage"])
+
+    const sitesInStorageValue = await sitesInStorage.sitesInStorage || []
+
+    await chrome.storage.local.set({sitesInStorage : [...sitesInStorageValue, newSiteData]})
 
     setAllAddedSites((prev)=> [...prev, newSiteData])
     setSiteNameBeingTyped("")

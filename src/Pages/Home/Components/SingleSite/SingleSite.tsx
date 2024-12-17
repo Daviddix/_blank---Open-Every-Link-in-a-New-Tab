@@ -27,10 +27,16 @@ function SingleSite({name, id, setShowEditModal, setValuesToEdit, allAddedSites,
     setShowEditModal(true)
   }
 
-  function deleteSiteFromList(id : number){
+  async function deleteSiteFromList(id : number){
     const newSites = allAddedSites.filter((site : AddedSite)=> site.id !== id)
+
+    const sitesInStorage = await chrome.storage.local.get(["sitesInStorage"])
+
+    await chrome.storage.local.set({sitesInStorage : newSites})
+    
     setAllAddedSites(newSites)
   }
+  
   return (
     <div className="single-site">
             <h2>{name}</h2>
