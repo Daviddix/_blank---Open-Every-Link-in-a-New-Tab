@@ -1,7 +1,13 @@
+@font-face {
+    font-family: plus-j;
+    src: url("./assets/font/plus-jarkata.ttf");
+}
+
 *, *::before, *::after{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: plus-j;
 }
 
 html{
@@ -19,4 +25,8 @@ body{
     --primary-lighter : #EFE8FF;
     --red-lighter : #FFE5E5;
     --red-darker : #820000;
+}
+
+button{
+    cursor: pointer;
 }
