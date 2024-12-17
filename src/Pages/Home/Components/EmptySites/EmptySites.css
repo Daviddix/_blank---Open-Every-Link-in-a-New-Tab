@@ -13,9 +13,11 @@ main .empty-sites{
 .empty-sites > h1{
     font-size: 1.8rem;
     margin: 1rem 0 0 0;
+    color: var(--primary-darker);
 }
 
 .empty-sites > p{
     font-size: 1.4rem;
     text-align: center;
+    color: var(--primary-darker);
 }

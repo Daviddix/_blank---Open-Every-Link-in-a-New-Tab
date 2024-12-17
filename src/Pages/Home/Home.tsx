@@ -10,7 +10,7 @@ function Home() {
     <main>
         <Header />
 
-        {/* <AllSitesToggle /> */}
+        <AllSitesToggle />
 
         <AddedSitesContainer />
 

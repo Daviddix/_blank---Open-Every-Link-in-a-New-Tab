@@ -1,5 +1,5 @@
 main .all-sites{
-    background-color: red;
+    background-color: var(--primary-lighter);
 }
 
 .all-sites .all-sites-inner{
@@ -11,6 +11,8 @@ main .all-sites{
 }
 
 .all-sites-inner p{
+    color: var(--primary-darker);
+    font-weight: 600;
     font-size: 1.4rem;
     margin: 0 0 0 .4rem;
 }

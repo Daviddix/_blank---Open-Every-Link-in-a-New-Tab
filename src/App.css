@@ -12,3 +12,11 @@ body{
     width: 100%;
     max-width:40rem;
 }
+
+:root{
+    --primary : #925DFE;
+    --primary-darker : #110033;
+    --primary-lighter : #EFE8FF;
+    --red-lighter : #FFE5E5;
+    --red-darker : #820000;
+}

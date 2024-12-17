@@ -6,4 +6,5 @@
 .added-sites > h1{
     opacity: .7;
     margin: 2rem 0 .5rem 0;
+    color: var(--primary-darker);
 }
