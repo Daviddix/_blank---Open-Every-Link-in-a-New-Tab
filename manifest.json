@@ -7,10 +7,10 @@
     "content_scripts": [
         {
           "js": ["src/Scripts/Content_Scripts/Content_Scripts.tsx"],
-          "matches": ["<all_urls>"] 
+          "matches": ["<all_urls>"]
         }
       ],
-      "permissions": ["storage", "activeTab", "tabs", "sidePanel"],
+      "permissions": ["storage", "activeTab", "sidePanel", "tabs"],
       "background": {
         "service_worker": "src/Scripts/Background.ts"
       },

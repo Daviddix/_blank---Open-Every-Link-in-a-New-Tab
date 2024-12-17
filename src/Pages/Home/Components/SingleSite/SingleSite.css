@@ -2,7 +2,7 @@
     border:1.5px solid var(--primary-lighter);
     border-radius: 1rem;
     padding:.6rem;
-    height: 5.5rem;
+    height: 5rem;
     display: flex;
     align-items: center;
     margin: 0 0 .8rem 0;
@@ -14,7 +14,7 @@
 
 .single-site h2{
     flex:1;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: var(--primary-darker);
 }
 
@@ -49,6 +49,6 @@
 }
 
 .single-site button img{
-    width: 55%;
+    width: 50%;
     aspect-ratio: 1/1;
 }
