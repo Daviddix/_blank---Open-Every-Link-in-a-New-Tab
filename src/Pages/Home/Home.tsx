@@ -14,7 +14,7 @@ function Home() {
 
         <AllSitesToggle />
 
-        <AddedSitesContainer />
+        {/* <AddedSitesContainer /> */}
 
         <EmptySites />
 

@@ -8,6 +8,7 @@ main .empty-sites{
 
 .empty-sites > img{
     width: 7rem;
+    height:6rem;
 }
 
 .empty-sites > h1{
