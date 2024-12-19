@@ -16,6 +16,7 @@ type addedSites = {
 
 function EditSiteModal({valuesToEdit, setShowEditModal, setValuesToEdit, allAddedSites, setAllAddedSites} : any) {
   const [newName, setNewName] = useState(valuesToEdit.name)
+  const [inputIsInvalid, setInputIsInvalid] = useState(false)
 
   function closeModal(){
     setValuesToEdit({})
@@ -25,6 +26,15 @@ function EditSiteModal({valuesToEdit, setShowEditModal, setValuesToEdit, allAdde
 
   async function updateParticularSite(newSiteName : string, oldSiteId : number, e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
+
+    const regex = /^www\.[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/
+
+    const input = newSiteName
+
+    if (!regex.test(input)) {
+      setInputIsInvalid(true)
+      return
+    }
 
     const filteredSites = allAddedSites.filter((site : addedSites)=> site.id !== oldSiteId)
 
@@ -70,13 +80,17 @@ function EditSiteModal({valuesToEdit, setShowEditModal, setValuesToEdit, allAdde
                 <label htmlFor="URL">Site's URL</label>
                 <input 
                 required
+                pattern="www\.[a-zA-Z0-9-]+\.[a-zA-Z]{2,}"
                 onChange={(e)=>{
+                  inputIsInvalid ? setInputIsInvalid(false) : ""
                   setNewName(e.target.value)
                 }}
                 value={newName}
                 type="text" 
                 id='URL' 
                 placeholder='e.g www.google.com' />
+
+                <small className={inputIsInvalid? "error" : ""}>Format of www.[website name].[website extension]</small>
 
                 <div className="buttons">
                     <button 

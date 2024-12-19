@@ -14,9 +14,19 @@ type propTypes = {
 
 function AddSiteModal({setAllAddedSites, setShowAddToSiteModal} : propTypes) {
   const [siteNameBeingTyped, setSiteNameBeingTyped] = useState("")
+  const [inputIsInvalid, setInputIsInvalid] = useState(false)
 
-  async function addNewSite(siteName : string, e : FormEvent){
+  async function addNewSite(siteName : string, e : FormEvent<HTMLFormElement>){
     e.preventDefault()
+
+    const regex = /^www\.[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/
+
+    const input = siteName
+
+    if (!regex.test(input)) {
+      setInputIsInvalid(true)
+      return
+    }
 
     const newSiteData : AddedSite = {
       name : siteName,
@@ -66,14 +76,18 @@ function AddSiteModal({setAllAddedSites, setShowAddToSiteModal} : propTypes) {
                 <label htmlFor="URL">Site's URL</label>
 
                 <input 
+                pattern="www\.[a-zA-Z0-9-]+\.[a-zA-Z]{2,}"
                 required
                 onChange={(e)=>{
+                  inputIsInvalid ? setInputIsInvalid(false) : ""
                   setSiteNameBeingTyped(e.target.value)
                 }}
                 value={siteNameBeingTyped}
                 type="text" 
                 id='URL' 
                 placeholder='e.g www.google.com' />
+
+                <small className={inputIsInvalid? "error" : ""}>Format of www.[website name].[website extension]</small>
 
                 <div className="buttons">
                     <button type='submit'>Add Site</button>

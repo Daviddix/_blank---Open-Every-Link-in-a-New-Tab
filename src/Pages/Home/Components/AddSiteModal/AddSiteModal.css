@@ -61,7 +61,7 @@
 .modal form input{
     width:100%;
     height:4.5rem;
-    background-color: #fafafa;
+    background-color: #fafafa; 
     padding: 0 .5rem;
     border: 1.5px solid rgba(0, 0, 0, 0.219);
     border-radius: .5rem;
@@ -69,11 +69,41 @@
     -moz-border-radius: .5rem;
     -ms-border-radius: .5rem;
     -o-border-radius: .5rem;
-    margin: 0 0 2rem 0;
 }
 
 .modal form input::placeholder{
     font-weight: 600;
+}
+
+.modal form:has(small.error) input{
+    outline-color: var(--red-darker);
+    background-color: var(--red-lighter);
+}
+
+.modal form small{
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: .6;
+    margin: .5rem 0 2rem 0;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -ms-transition: .2s ease;
+    -o-transition: .2s ease;
+}
+
+form small.error{
+    color: var(--red-darker);
+    background-color: var(--red-lighter);
+    padding: .5rem;
+    opacity: 1;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 
 .modal .buttons{
