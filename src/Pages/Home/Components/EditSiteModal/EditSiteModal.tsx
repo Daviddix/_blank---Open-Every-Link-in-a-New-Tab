@@ -2,11 +2,23 @@ import "./EditSiteModal.css"
 import editIcon from "../../../../assets/update-icon.svg"
 import { FormEvent, useState } from "react";
 
-type propTypes = {
-  name : string;
-  id : number;
-  setShowEditModal : Function;
-  setValuesToEdit : null;
+
+type editValue = {
+  name : string,
+  id : number
+}
+
+type AddedSite = {
+  name : string,
+  id : number
+}
+
+type PropTypes = {
+  valuesToEdit : editValue;
+  setShowEditModal : React.Dispatch<React.SetStateAction<boolean>>;
+  setValuesToEdit : React.Dispatch<React.SetStateAction<editValue>>;
+  allAddedSites : AddedSite[];
+  setAllAddedSites : React.Dispatch<React.SetStateAction<AddedSite[]>>;
 }
 
 type addedSites = {
@@ -14,12 +26,12 @@ type addedSites = {
   id : number
 }
 
-function EditSiteModal({valuesToEdit, setShowEditModal, setValuesToEdit, allAddedSites, setAllAddedSites} : any) {
+function EditSiteModal({valuesToEdit, setShowEditModal, setValuesToEdit, allAddedSites, setAllAddedSites} : PropTypes) {
   const [newName, setNewName] = useState(valuesToEdit.name)
   const [inputIsInvalid, setInputIsInvalid] = useState(false)
 
   function closeModal(){
-    setValuesToEdit({})
+    setValuesToEdit({name : "", id : 0})
 
     setShowEditModal(false)
   }

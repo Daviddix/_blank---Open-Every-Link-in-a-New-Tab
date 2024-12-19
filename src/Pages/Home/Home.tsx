@@ -23,7 +23,7 @@ function Home() {
 
   const [showEditModal, setShowEditModal] =  useState(false)
 
-  const [valuesToEdit, setValuesToEdit] = useState<editValue | {}>({})
+  const [valuesToEdit, setValuesToEdit] = useState<editValue>({name : "", id : 0})
 
   const [allAddedSites, setAllAddedSites] = useState<AddedSite[]>([])
 
