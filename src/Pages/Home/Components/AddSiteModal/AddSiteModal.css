@@ -128,12 +128,12 @@ form small.error{
     -o-border-radius: 1rem;
 }
 
-.modal .buttons button:last-of-type{
+.modal .buttons button:first-of-type{
     background-color: var(--red-lighter);
     color: var(--red-darker);
 }
 
-.modal .buttons button:first-of-type{
+.modal .buttons button:last-of-type{
     background-color: var(--primary-lighter);
     color: var(--primary-darker);
 }

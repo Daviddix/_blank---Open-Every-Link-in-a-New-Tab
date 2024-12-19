@@ -94,13 +94,15 @@ function EditSiteModal({valuesToEdit, setShowEditModal, setValuesToEdit, allAdde
 
                 <div className="buttons">
                     <button 
-                   type='submit'>Update Site</button>
-
-                    <button 
                     onClick={()=>{
                       closeModal()
                     }}
-                    type="button">Cancel</button>
+                    type="button">Cancel
+                    </button>
+
+                  <button 
+                   type='submit'>Update Site
+                  </button>
                 </div>
             </form>
           </div>

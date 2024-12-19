@@ -90,13 +90,14 @@ function AddSiteModal({setAllAddedSites, setShowAddToSiteModal} : propTypes) {
                 <small className={inputIsInvalid? "error" : ""}>Format of www.[website name].[website extension]</small>
 
                 <div className="buttons">
-                    <button type='submit'>Add Site</button>
-
-                    <button 
+                  <button 
                     onClick={()=>{
                       closeModal()
                     }}
-                    type="button">Cancel</button>
+                    type="button">Cancel
+                    </button>
+                  
+                    <button type='submit'>Add Site</button>
                 </div>
             </form>
           </div>
