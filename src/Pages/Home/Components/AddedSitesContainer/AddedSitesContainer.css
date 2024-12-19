@@ -22,3 +22,42 @@
     border-radius : 1rem;
     backdrop-filter: blur(10px);
 }
+
+.added-sites .all-single-site-container{
+    max-height:30rem;
+    overflow: auto;
+    padding: 0 0 3rem 0;
+}
+
+.added-sites .all-single-site-container::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+  }
+
+  .added-sites .all-single-site-container::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: var(--primary-lighter);
+  }
+  
+  .added-sites .all-single-site-container::-webkit-scrollbar-track:hover {
+    background-color: #B8C0C2;
+  }
+  
+  .added-sites .all-single-site-container::-webkit-scrollbar-track:active {
+    background-color: #B8C0C2;
+  }
+  
+  .added-sites .all-single-site-container::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: hsl(260, 99%, 78%);
+    
+}
+  
+  .added-sites .all-single-site-container::-webkit-scrollbar-thumb:hover {
+    background-color:  var(--primary);
+
+  }
+  
+  .added-sites .all-single-site-container::-webkit-scrollbar-thumb:active {
+    background-color: hsl(260, 99%, 58%);
+  }

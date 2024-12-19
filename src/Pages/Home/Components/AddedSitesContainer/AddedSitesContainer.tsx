@@ -31,7 +31,9 @@ function AddedSitesContainer({allAddedSites, setAllAddedSites, setShowEditModal,
     <div className={useOnAllSites ? "added-sites disabled":"added-sites"}>
           <h1>Sites you've Added</h1>
 
+          <div className="all-single-site-container">
           {mappedSites}
+          </div>
         </div>
   )
 }
