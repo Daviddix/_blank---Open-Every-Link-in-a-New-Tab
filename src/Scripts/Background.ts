@@ -29,7 +29,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab)=>{
             if(await useOnAllSites()){
                   runOnEverySite(tabId)
             }else{
-                  checkIfCurrentPageIsAmongAddedSites(tab.url, tabId)
+                  await checkIfCurrentPageIsAmongAddedSites(tab.url, tabId)
             }
       }
 })
@@ -72,4 +72,4 @@ async function useOnAllSites() : Promise<boolean>{
       return UseOnAllSitesInStorageValue
 }
 
-console.log("gg")
+export {}

@@ -75,8 +75,7 @@ function AddSiteModal({setAllAddedSites, setShowAddToSiteModal} : propTypes) {
             >
                 <label htmlFor="URL">Site's URL</label>
 
-                <input 
-                pattern="www\.[a-zA-Z0-9-]+\.[a-zA-Z]{2,}"
+                <input
                 required
                 onChange={(e)=>{
                   inputIsInvalid ? setInputIsInvalid(false) : ""

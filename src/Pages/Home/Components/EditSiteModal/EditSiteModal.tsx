@@ -92,7 +92,6 @@ function EditSiteModal({valuesToEdit, setShowEditModal, setValuesToEdit, allAdde
                 <label htmlFor="URL">Site's URL</label>
                 <input 
                 required
-                pattern="www\.[a-zA-Z0-9-]+\.[a-zA-Z]{2,}"
                 onChange={(e)=>{
                   inputIsInvalid ? setInputIsInvalid(false) : ""
                   setNewName(e.target.value)

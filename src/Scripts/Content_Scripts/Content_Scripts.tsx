@@ -1,10 +1,7 @@
 import "./Content_Script.css"
 
-console.log("hello from content script")
-
 chrome.runtime.onMessage.addListener(function(message){
     if(message.inject){
-        console.log("message gotten")
         injectIntoLinks()
     }
 })
