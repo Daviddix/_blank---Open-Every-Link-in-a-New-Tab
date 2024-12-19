@@ -57,7 +57,7 @@ function EditSiteModal({valuesToEdit, setShowEditModal, setValuesToEdit, allAdde
 
             <div className="modal-header">
                 <div className="inner">
-                    <img src={editIcon} alt="globe" />
+                    <img src={editIcon} alt="pencil" />
                     <h1>Update URL</h1>
                 </div>
             </div>
@@ -69,6 +69,7 @@ function EditSiteModal({valuesToEdit, setShowEditModal, setValuesToEdit, allAdde
             >
                 <label htmlFor="URL">Site's URL</label>
                 <input 
+                required
                 onChange={(e)=>{
                   setNewName(e.target.value)
                 }}

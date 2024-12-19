@@ -8,24 +8,31 @@
 //     .catch((error) => console.error(error))
 // }
 
-chrome.tabs.onActivated.addListener(async (activeInfo) => {
-      console.log("i just navigated")
-      await chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
-            let url = tabs[0].url;
-            if(url){
-            console.log(url)
-            checkIfCurrentPageIsAmongAddedSites(url, activeInfo.tabId)
-            }
-        })
-});
+type AddedSite = {
+      name : string;
+      id : number;
+}
 
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab)=>{
-      console.log(tab.url)
+// chrome.tabs.onActivated.addListener(async (activeInfo) => {
+//       console.log("onActivated ran")
+//       chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+//             let url = tabs[0].url;
+//             if(url){
+//             checkIfCurrentPageIsAmongAddedSites(url, activeInfo.tabId)
+//             }
+//         })
+// })
+
+chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab)=>{
+      console.log("onUpdated ran")
       if(tab.url){
-            checkIfCurrentPageIsAmongAddedSites(tab.url, tabId)
+            if(await useOnAllSites()){
+                  runOnEverySite(tabId)
+            }else{
+                  checkIfCurrentPageIsAmongAddedSites(tab.url, tabId)
+            }
       }
 })
-
 
 async function checkIfCurrentPageIsAmongAddedSites(url : string, currentTabId : number){
       const splitUrl = url.split("/")[2]
@@ -33,21 +40,36 @@ async function checkIfCurrentPageIsAmongAddedSites(url : string, currentTabId : 
       if (allSites.length == 0){
             return
       }else{
-            allSites.forEach((site : {name : string, id : number})=>{
+            allSites.forEach((site : AddedSite)=>{
                   if(site.name.includes(splitUrl)){
                         chrome.tabs.sendMessage(currentTabId , {
-                              inject : true
+                              inject : true,
+                              runOnAllSites : false
                   })}
-            })
-      }
+      })}
 }
 
-async function getAllSitesFromStorage() : Promise<[]>{
+function runOnEverySite(currentTabId : number){
+      chrome.tabs.sendMessage(currentTabId , {
+            inject : true,
+            runOnAllSites : true
+      })
+}
+
+async function getAllSitesFromStorage() : Promise<AddedSite[]>{
       const sites = await chrome.storage.local.get("sitesInStorage")
 
       const sitesValues = await sites.sitesInStorage || []
 
       return sitesValues
+}
+
+async function useOnAllSites() : Promise<boolean>{
+      const value = await chrome.storage.local.get("UseOnAllSitesInStorage")
+
+      const UseOnAllSitesInStorageValue = await value.UseOnAllSitesInStorage || false
+
+      return UseOnAllSitesInStorageValue
 }
 
 console.log("gg")

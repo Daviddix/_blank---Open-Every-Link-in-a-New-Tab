@@ -27,6 +27,8 @@ function Home() {
 
   const [allAddedSites, setAllAddedSites] = useState<AddedSite[]>([])
 
+  const [useOnAllSites, setUseOnAllSites] = useState(false)
+
   function showAddToListModal(){
     setShowAddToSiteModal(true)
   }
@@ -39,8 +41,17 @@ function Home() {
     setAllAddedSites(sitesValues)
   }
 
+  async function getUseOnAllAllSitesValueFromStorage(){
+    const value = await chrome.storage.local.get("UseOnAllSitesInStorage")
+
+    const UseOnAllSitesInStorageValue = await value.UseOnAllSitesInStorage || false
+
+    setUseOnAllSites(UseOnAllSitesInStorageValue)
+  }
+
   useEffect(()=>{
     getSitesFromStorage()
+    getUseOnAllAllSitesValueFromStorage()
   }, [])
   
   return (
@@ -48,11 +59,14 @@ function Home() {
         <Header />
 
         <AllSitesToggle
+        useOnAllSites={useOnAllSites}
+        setUseOnAllSites={setUseOnAllSites}
         />
 
         {
           allAddedSites.length !== 0 &&
         <AddedSitesContainer 
+        useOnAllSites={useOnAllSites}
         setValuesToEdit={setValuesToEdit}
         allAddedSites={allAddedSites}
         setShowEditModal={setShowEditModal}
@@ -60,7 +74,8 @@ function Home() {
         />}
 
         {
-          allAddedSites.length == 0 &&
+          allAddedSites.length == 0 && 
+          !useOnAllSites && 
           <EmptySites />
         }
 
@@ -86,7 +101,7 @@ function Home() {
         onClick={()=>{
           showAddToListModal()
         }}
-        className="primary-button">Add New Site</button>
+        className={useOnAllSites ? "primary-button disabled" : "primary-button"}>Add New Site</button>
     </main>
   )
 }
