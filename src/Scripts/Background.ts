@@ -13,18 +13,20 @@ type AddedSite = {
       id : number;
 }
 
-// chrome.tabs.onActivated.addListener(async (activeInfo) => {
-//       console.log("onActivated ran")
-//       chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
-//             let url = tabs[0].url;
-//             if(url){
-//             checkIfCurrentPageIsAmongAddedSites(url, activeInfo.tabId)
-//             }
-//         })
-// })
+chrome.tabs.onActivated.addListener(async (activeInfo) => {
+      chrome.tabs.query({active: true, lastFocusedWindow: true}, async(tabs) => {
+            let url = tabs[0].url;
+            if(url){
+                  if(await useOnAllSites()){
+                        runOnEverySite(activeInfo.tabId)
+                  }else{
+                        checkIfCurrentPageIsAmongAddedSites(url, activeInfo.tabId)
+                  }
+            }
+        })
+})
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab)=>{
-      console.log("onUpdated ran")
       if(tab.url){
             if(await useOnAllSites()){
                   runOnEverySite(tabId)
@@ -41,13 +43,11 @@ async function checkIfCurrentPageIsAmongAddedSites(url : string, currentTabId : 
             return
       }else{
             allSites.forEach((site : AddedSite)=>{
-                  console.log(`${splitUrl} matches ${site.name} is ${splitUrl.includes(site.name)}`)
                   if(splitUrl.includes(site.name)){
                         chrome.tabs.sendMessage(currentTabId , {
                               inject : true,
                               runOnAllSites : false
                   })
-                  console.log("match found")
                   return
             }
 
