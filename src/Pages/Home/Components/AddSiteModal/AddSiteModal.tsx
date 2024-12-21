@@ -19,7 +19,7 @@ function AddSiteModal({setAllAddedSites, setShowAddToSiteModal} : propTypes) {
   async function addNewSite(siteName : string, e : FormEvent<HTMLFormElement>){
     e.preventDefault()
 
-    const regex = /^www\.[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/
+    const regex = /^[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})*$/
 
     const input = siteName
 
@@ -84,9 +84,9 @@ function AddSiteModal({setAllAddedSites, setShowAddToSiteModal} : propTypes) {
                 value={siteNameBeingTyped}
                 type="text" 
                 id='URL' 
-                placeholder='e.g www.google.com' />
+                placeholder='e.g google.com' />
 
-                <small className={inputIsInvalid? "error" : ""}>Format of www.[website name].[website extension]</small>
+                <small className={inputIsInvalid? "error" : ""}>Format of [website name].[website extension]</small>
 
                 <div className="buttons">
                   <button 

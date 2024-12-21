@@ -41,11 +41,16 @@ async function checkIfCurrentPageIsAmongAddedSites(url : string, currentTabId : 
             return
       }else{
             allSites.forEach((site : AddedSite)=>{
-                  if(site.name.includes(splitUrl)){
+                  console.log(`${splitUrl} matches ${site.name} is ${splitUrl.includes(site.name)}`)
+                  if(splitUrl.includes(site.name)){
                         chrome.tabs.sendMessage(currentTabId , {
                               inject : true,
                               runOnAllSites : false
-                  })}
+                  })
+                  console.log("match found")
+                  return
+            }
+
       })}
 }
 
